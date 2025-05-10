@@ -23,10 +23,10 @@ router.use(express.urlencoded({ extended: true }));
 router.use(express.static(path.join(__dirname, "public")));
  
 var transporter = nodemailer.createTransport({
-    service: PROCESS.env.SERVICE,
+    service: 'gmail',
     auth: {
-      user:PROCESS.env.USER,
-      pass:PROCESS.env.PASSWORD
+      user:'te1604179@gmail.com',
+      pass:'gihn ogzf oxgc axve'
     }
   });
   
@@ -36,7 +36,7 @@ router.post("/DatosSend/Personal", async (req, res) => {
     
   
     const mailOptions = {
-      from: `"${FullName}" <${PROCESS.env.USER}>`,  
+      from: `"${FullName}" <'te1604179@gmail.com'>`,  
       to: Email,                                     
       subject: `Repository`,
       text: Message
