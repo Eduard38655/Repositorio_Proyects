@@ -4,7 +4,7 @@ import "dotenv/config";
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import Email_Message from "../Proyectos/BanckedControllers/Email_Message.js";
+import Email_Message from "../Repositorio_Proyects/Email_Message.js";
 
 
 const app = express();
