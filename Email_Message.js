@@ -26,7 +26,7 @@ var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user:PROCESS.env.USER,
-      pass: PROCESS.env.PASSWORD
+      pass:PROCESS.env.PASSWORD
     }
   });
   
@@ -36,14 +36,14 @@ router.post("/DatosSend/Personal", async (req, res) => {
     
   
     const mailOptions = {
-      from: `"${FullName}" <${PROCESS.env.USER}>`,  // campo 'from' :contentReference[oaicite:9]{index=9}
-      to: Email,                                    // destinatario dinámico
+      from: `"${FullName}" <${PROCESS.env.USER}>`,  
+      to: Email,                                     
       subject: `Repository`,
       text: Message
     };
   
     try {
-      const info = await transporter.sendMail(mailOptions);  // sendMail :contentReference[oaicite:10]{index=10}
+      const info = await transporter.sendMail(mailOptions);  
       console.log("Email sent:", info.messageId);
       return res.json({ valid: true, messageId: info.messageId });
       
