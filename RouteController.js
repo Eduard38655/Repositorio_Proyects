@@ -1,10 +1,11 @@
 import cookieParser from 'cookie-parser';
 import cors from "cors";
+import "dotenv/config";
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Email_Message from "../Proyectos/BanckedControllers/Email_Message.js";
-const secretKey = 'mi_clave_secreta'; 
+
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);

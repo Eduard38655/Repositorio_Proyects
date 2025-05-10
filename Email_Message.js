@@ -1,5 +1,6 @@
  
 import cors from "cors";
+import "dotenv/config";
 import express from "express";
 import nodemailer from "nodemailer";
 import path from "path";
@@ -8,7 +9,7 @@ import { fileURLToPath } from "url";
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const secretKey = 'mi_clave_secreta';
+ 
 
 router.use(cors({ 
   credentials: true, 
@@ -24,8 +25,8 @@ router.use(express.static(path.join(__dirname, "public")));
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'te1604179@gmail.com',
-      pass: 'gihn ogzf oxgc axve'
+      user:PROCESS.env.USER,
+      pass: PROCESS.env.PASSWORD
     }
   });
   
@@ -35,7 +36,7 @@ router.post("/DatosSend/Personal", async (req, res) => {
     
   
     const mailOptions = {
-      from: `"${FullName}" <te1604179@gmail.com>`,  // campo 'from' :contentReference[oaicite:9]{index=9}
+      from: `"${FullName}" <${PROCESS.env.USER}>`,  // campo 'from' :contentReference[oaicite:9]{index=9}
       to: Email,                                    // destinatario dinámico
       subject: `Repository`,
       text: Message
