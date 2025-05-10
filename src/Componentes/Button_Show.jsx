@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Email_Contact from "../ContactInfo/Email_Contact.jsx";
 
 function button_Show({Activate}) {
 const [showEmailInputs, setShowEmailInputs] = useState(false);
 
     function Show_Personal_Details(params) {
-        alert("d")
+       
         setShowEmailInputs(true)
 
     }

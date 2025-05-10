@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Styles from "../Componentes_Styles/Contact.module.css";
 import Email_Contact from "../ContactInfo/Email_Contact.jsx";
 import Curiculum_Contact from "../Curiculum/Curiculum.jsx";
@@ -16,7 +16,7 @@ function Contact_Details(params) {
         
           
     <a
-  href="https://www.linkedin.com/in/eduardo-ferreras-de-los-santos-13632925a/"
+  href="https://github.com/Eduard38655"
   target="_blank"
   rel="noopener noreferrer"
 >
