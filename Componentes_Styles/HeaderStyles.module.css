@@ -1,0 +1,117 @@
+.Header_Container{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ 
+    justify-content: space-between;
+ 
+}
+.HeaderImage{
+    width: 500px;
+    height: 370px;
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.HeaderImage p{
+    font-size: 25px;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+     
+}
+.HeaderImage p span{
+    font-size: 15px;
+    font-weight: 600;
+    color: gray;
+}
+.HeaderImage img{
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    border: 5px solid grey;
+    box-shadow: 20px 10px 20px 10px gainsboro; 
+     background-color: #FFFFFF;
+   
+}
+
+.DivAboutMe{
+    width: 80%;
+    height: 150px;
+    display: flex;
+     padding: 30px;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 10px 10px 10px 10px gainsboro;
+}
+.DivAboutMe h3{
+    font-size: 25px;
+    font-weight: 600;
+    color: #333333;
+   
+}
+.DivAboutMe p{
+    color: gray;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 500px) {
+
+
+    .Header_Container{
+        width: 100%;
+        height: 450px ;
+    }
+    .HeaderImage img{
+        width: 150px;
+        height: 150px;
+    }
+    .HeaderImage p{
+        font-size: 18px;
+        font-weight: 600;
+        color: #333333;
+        text-align: center;
+    }
+    .HeaderImage p span{
+        font-size: 15px;
+        font-weight: 600;
+        color: gray;
+    }
+
+    .DivAboutMe{
+        width: 80%;
+        height: 2090px;
+        display: flex;
+         padding: 30px;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 8px;
+        background-color: #FFFFFF;
+        box-shadow: 10px 10px 10px 10px gainsboro;
+    }
+    .DivAboutMe h3{
+        font-size: 18px;
+        font-weight: 600;
+        color: #333333;
+       
+    }
+    .DivAboutMe p{
+        color: gray;
+        font-size: 15px;
+        font-weight: 400;
+        width: 100%;
+       
+    }
+}
