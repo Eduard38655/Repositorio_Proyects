@@ -23,7 +23,7 @@ router.use(express.urlencoded({ extended: true }));
 router.use(express.static(path.join(__dirname, "public")));
  
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: PROCESS.env.SERVICE,
     auth: {
       user:PROCESS.env.USER,
       pass:PROCESS.env.PASSWORD
