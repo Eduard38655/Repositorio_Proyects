@@ -13,11 +13,12 @@ const __dirname = path.dirname(__filename);
 
 
 // Middleware
- 
+ let Allow=["https://eduard38655.github.io","http://localhost:5173"]
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // Asegura que "public" es el directorio correcto
-app.use(cors({ credentials: true, origin: "http://localhost:5173",exposedHeaders: ['set-cookie'] }));
+app.use(cors({ credentials: true, origin:Allow,exposedHeaders: ['set-cookie'] }));
 app.use(cookieParser());
  
 

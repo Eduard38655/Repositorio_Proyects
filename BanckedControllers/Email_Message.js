@@ -10,10 +10,10 @@ const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
  
-
+let Allow=["https://eduard38655.github.io","http://localhost:5173"]
 router.use(cors({ 
   credentials: true, 
-  origin: "http://localhost:5173",
+  origin: Allow,
   exposedHeaders: ['set-cookie'] 
 }));
 
