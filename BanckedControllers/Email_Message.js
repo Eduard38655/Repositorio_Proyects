@@ -44,6 +44,7 @@ router.post("/DatosSend/Personal", async (req, res) => {
   };
 
   try {
+    
     const info = await transporter.sendMail(mailOptions);
     console.log("Email sent:", info.messageId);
     res.json({ valid: true, messageId: info.messageId });
