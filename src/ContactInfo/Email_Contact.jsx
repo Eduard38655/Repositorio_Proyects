@@ -10,6 +10,7 @@ function EmailContact({ activate }) {
 
   const sendData = async (e) => {
     e.preventDefault();
+    console.log("Ma");
 
     if (!fullName || !email || !message) {
       setHasError(true);
