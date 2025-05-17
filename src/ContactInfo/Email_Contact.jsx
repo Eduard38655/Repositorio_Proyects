@@ -8,8 +8,8 @@ function Email_Contact({ Activate }) {
   const [error_data, seterror_data] = useState(false);
   const [valid_data, setvalid_data] = useState(false);
 
-  async function Send_Data(e) {
-    e.preventDefault();
+  async function Send_Data(event) {
+   event.preventDefault();
 
     if (!FullName || !Email || !Message) {
       seterror_data(true);
@@ -88,7 +88,7 @@ function Email_Contact({ Activate }) {
               />
             </div>
 
-            <button type="submit" onClick={Send_Data}>Send Message</button>
+            <button type="submit"  onSubmit={Send_Data}>Send Message</button>
           </div>
         </div>
       )}
