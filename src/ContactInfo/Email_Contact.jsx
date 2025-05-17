@@ -1,99 +1,102 @@
 import React, { useState } from "react";
 import Styles from "../Componentes_Styles/Contact.module.css";
 
-function Email_Contact({ Activate }) {
-  const [FullName, setFullName] = useState("");
-  const [Email, setEmail] = useState("");
-  const [Message, setMessage] = useState("");
-  const [error_data, seterror_data] = useState(false);
-  const [valid_data, setvalid_data] = useState(false);
+function EmailContact({ activate }) {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [hasError, setHasError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  async function Send_Data(event) {
-   event.preventDefault();
+  const sendData = async (e) => {
+    e.preventDefault();
 
-    if (!FullName || !Email || !Message) {
-      seterror_data(true);
-      setvalid_data(false);
+    if (!fullName || !email || !message) {
+      setHasError(true);
+      setIsSuccess(false);
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:3000/DatosSend/Personal", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" }, // corregido el nombre del header
-        body: JSON.stringify({ FullName, Email, Message })
-      });
+      const response = await fetch(
+        "http://localhost:3000/DatosSend/Personal",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ FullName: fullName, Email: email, Message: message }),
+        }
+      );
 
       const data = await response.json();
-      
 
-      if (data.valid) {
-        setvalid_data(true);
-        seterror_data(false);
-        // Limpiar campos si deseas
+      if (response.ok && data.valid) {
+        setIsSuccess(true);
+        setHasError(false);
         setFullName("");
         setEmail("");
         setMessage("");
       } else {
-        seterror_data(true);
-        setvalid_data(false);
+        setHasError(true);
+        setIsSuccess(false);
       }
-    } catch (error) {
-      console.error(error);
-      seterror_data(true);
-      setvalid_data(false);
+    } catch (err) {
+      console.error(err);
+      setHasError(true);
+      setIsSuccess(false);
     }
-  }
+  };
+
+  if (!activate) return null;
 
   return (
-    <>
-      {Activate && (
-        <div className={Styles.Div_Container_Contact_Inputs}>
-          <div className={Styles.Div_Container_Contact_Inputs_Div}>
-            <div>
-              {error_data && <i style={{ color: "red" }} className="fa-solid fa-circle-xmark"></i>}
-              {valid_data && <i style={{ color: "green" }} className="fa-solid fa-circle-check"></i>}
-              <input
-                id="FullName"
-                type="text"
-                value={FullName}
-                onChange={(e) => setFullName(e.target.value)}
-                placeholder="Tu nombre"
-                required
-              />
-            </div>
-
-            <div>
-              {error_data && <i style={{ color: "red" }} className="fa-solid fa-circle-xmark"></i>}
-              {valid_data && <i style={{ color: "green" }} className="fa-solid fa-circle-check"></i>}
-              <input
-                id="Email"
-                type="email"
-                value={Email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Tu correo"
-                required
-              />
-            </div>
-
-            <div>
-              {error_data && <i style={{ color: "red" }} className="fa-solid fa-circle-xmark"></i>}
-              {valid_data && <i style={{ color: "green" }} className="fa-solid fa-circle-check"></i>}
-              <textarea
-                id="Message"
-                value={Message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Tu mensaje"
-                required
-              />
-            </div>
-
-            <button type="submit"  onSubmit={Send_Data}>Send Message</button>
-          </div>
+    <div className={Styles.Div_Container_Contact_Inputs}>
+      <form
+        className={Styles.Div_Container_Contact_Inputs_Div}
+        onSubmit={sendData}
+      >
+        <div>
+          {hasError && <i className="fa-solid fa-circle-xmark" style={{ color: "red" }} />}
+          {isSuccess && <i className="fa-solid fa-circle-check" style={{ color: "green" }} />}
+          <input
+            id="FullName"
+            type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="Tu nombre"
+            required
+          />
         </div>
-      )}
-    </>
+
+        <div>
+          {hasError && <i className="fa-solid fa-circle-xmark" style={{ color: "red" }} />}
+          {isSuccess && <i className="fa-solid fa-circle-check" style={{ color: "green" }} />}
+          <input
+            id="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Tu correo"
+            required
+          />
+        </div>
+
+        <div>
+          {hasError && <i className="fa-solid fa-circle-xmark" style={{ color: "red" }} />}
+          {isSuccess && <i className="fa-solid fa-circle-check" style={{ color: "green" }} />}
+          <textarea
+            id="Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Tu mensaje"
+            required
+          />
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   );
 }
 
-export default Email_Contact;
+export default EmailContact;
