@@ -7,10 +7,10 @@ function EmailContact({ activate }) {
   const [message, setMessage] = useState("");
   const [hasError, setHasError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
+console.log("Ma");
   const sendData = async (e) => {
     e.preventDefault();
-    console.log("Ma");
+     
 
     if (!fullName || !email || !message) {
       setHasError(true);
